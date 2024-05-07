@@ -1,4 +1,4 @@
-import isEqual from 'lodash/isequal';
+import isEqual from 'lodash/isEqual';
 import { type ChangeEvent, type FC, useState, type FormEvent, useEffect, memo } from 'react';
 
 import { Button } from './Button';
