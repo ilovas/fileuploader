@@ -1,0 +1,7 @@
+{
+  "errorMessages.single": "An error occured",
+  "errorMessages.generic": "The selected file extension is not supported",
+  "success": "The file upload was successfully",
+  "fileUploadLabel": "Upload file",
+  "button": "Upload"
+}
