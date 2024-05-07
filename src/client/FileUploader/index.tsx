@@ -27,7 +27,6 @@ const fileUploadApi = {
     chunk: 'api/upload-chunk',
 };
 
-// TODO: unit test
 // TODO: nth: use aria-invalid on error
 const FileUploaderComponent: FC<FileUploaderProps> = ({
     acceptedFileTypes = ['application/pdf', 'image/jpeg', 'image/png'],
