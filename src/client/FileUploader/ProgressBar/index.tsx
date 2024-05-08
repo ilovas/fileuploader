@@ -9,6 +9,10 @@ export const ProgressBar: FC<ProgressBarProps> = ({ value, visible }) => (
         data-testid="ProgressBarContainer"
         className="w-full bg-gray-200 rounded-full mb-2 h-1 border-1"
         aria-live="polite"
+        role="progressbar"
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-valuenow={value}
     >
         {visible && (
             <div

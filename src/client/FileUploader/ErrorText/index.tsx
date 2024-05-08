@@ -4,7 +4,7 @@ interface ErrorTextProps {
     text: string;
 }
 export const ErrorText: FC<ErrorTextProps> = ({ text }) => (
-    <div className="text-sm text-red-500" aria-live="assertive" data-testid="ErrorText">
+    <div className="text-sm text-red-500" aria-live="assertive" data-testid="ErrorText" role="alert">
         {text}
     </div>
 );

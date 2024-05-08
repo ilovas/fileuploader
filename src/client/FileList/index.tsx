@@ -1,4 +1,5 @@
-import { type FC, useEffect, useState } from 'react';
+import isEqual from 'lodash/isEqual';
+import { type FC, memo, useEffect, useState } from 'react';
 
 import labels from './labels.json';
 
@@ -10,7 +11,7 @@ interface FileListResponse {
 }
 
 const api = '/api/files';
-export const FileList: FC<FileListProps> = ({ counter }) => {
+const FileListComponent: FC<FileListProps> = ({ counter }) => {
     const [list, setList] = useState<File[]>([]);
 
     useEffect(() => {
@@ -43,3 +44,6 @@ export const FileList: FC<FileListProps> = ({ counter }) => {
         </section>
     );
 };
+
+const propCompare = (prevProps: FileListProps, nextProps: FileListProps) => isEqual(prevProps, nextProps);
+export const FileList = memo(FileListComponent, propCompare);

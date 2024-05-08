@@ -27,7 +27,6 @@ const fileUploadApi = {
     chunk: 'api/upload-chunk',
 };
 
-// TODO: nth: use aria-invalid on error
 const FileUploaderComponent: FC<FileUploaderProps> = ({
     acceptedFileTypes = ['application/pdf', 'image/jpeg', 'image/png'],
     chunkSize,
@@ -66,7 +65,7 @@ const FileUploaderComponent: FC<FileUploaderProps> = ({
         const file = files?.[0];
 
         cleanUpStates();
-        setFile(file);
+        // setFile(file);
         setprogressBarCounterVisible(false);
         setSuccessMessageVisible(false);
         setChunkSubmitProgress(0);
@@ -81,6 +80,7 @@ const FileUploaderComponent: FC<FileUploaderProps> = ({
             } else {
                 const message = labels['errorMessages.single'];
                 setError(message);
+
                 onError && onError(message);
             }
         }
@@ -120,7 +120,7 @@ const FileUploaderComponent: FC<FileUploaderProps> = ({
     };
 
     return (
-        <section className="p-4 bg-white/75 border border-zinc-500 rounded" data-testid="FileUploader">
+        <section className="p-4 bg-white/75 border border-zinc-500 rounded" data-testid="FileUploader" role="form">
             {progressBarVisible && chunkSize && (
                 <ProgressBar value={chunkSubmitProgress} visible={progressBarCounterVisible} />
             )}
@@ -130,7 +130,7 @@ const FileUploaderComponent: FC<FileUploaderProps> = ({
                         {fileUploadLabel}
                     </label>
                 </h1>
-                <FileInput id="file-upload-label" onChange={onChangeHandler} />
+                <FileInput id="file-upload" onChange={onChangeHandler} label="file-upload-label" />
                 {!!error && <ErrorText text={error} />}
             </div>
             <Button
@@ -140,7 +140,7 @@ const FileUploaderComponent: FC<FileUploaderProps> = ({
                 {buttonLabel}
             </Button>
             {isSuccessMessageVisible && (
-                <div className="format text-md" aria-live="polite" data-testid="SuccessText">
+                <div className="format text-md" role="status" aria-live="polite" data-testid="SuccessText">
                     {labels.success}
                 </div>
             )}

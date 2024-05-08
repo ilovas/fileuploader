@@ -29,10 +29,6 @@ export const useUploadSingleFileInChunks = (api: string): UploadResult => {
             const totalChunks = Math.ceil(file.size / chunkSize);
 
             const uploadChunk = async (): Promise<void> => {
-                // if (chunkIndex >= totalChunks) {
-                //     return;
-                // }
-
                 const chunk = file.slice(start, Math.min(end, file.size));
                 const formData = new FormData();
                 formData.append('file', chunk, file.name);
